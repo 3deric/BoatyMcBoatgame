@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://b8fjc5khqnvju"]
+[gd_scene load_steps=2 format=3 uid="uid://b8fjc5khqnvju"]
 
-[node name="LevelRoot" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://b2hgvkrs4gtb7" path="res://Levels/Player.tscn" id="1_fkc30"]
+
+[node name="LevelRoot" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fkc30")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.344053, 0.93895, 0, -0.93895, 0.344053, 0.0248158, 5.70114, 1.19208)

@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://weo0uc418v2l"]
+[gd_scene load_steps=4 format=3 uid="uid://b2hgvkrs4gtb7"]
 
+[ext_resource type="ArrayMesh" uid="uid://besipei0tgef1" path="res://Assets/Meshes/watercraftPack_006.obj" id="1_bxyid"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_sinsm"]
 
-[node name="Player" type="RigidBody2D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wl08p"]
+radius = 0.26
+height = 1.22
+
+[node name="Player" type="RigidBody3D"]
+gravity_scale = 0.0
 script = ExtResource("1_sinsm")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-14, 14, -14, -14, 0, -36, 15, -14, 15, 14)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.133501, 0.0708853)
+shape = SubResource("CapsuleShape3D_wl08p")
+
+[node name="WatercraftPack006" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_bxyid")
