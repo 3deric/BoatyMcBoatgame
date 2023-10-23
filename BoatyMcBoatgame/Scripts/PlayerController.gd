@@ -1,7 +1,6 @@
 extends RigidBody3D
 
-var accInput = 0 #input value for fwd and bwd acceleration
-var steerInput = 0 #input value for left and right
+var input = Vector2.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,9 +11,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	InputConctroller()
-	print("acc: " + str(accInput))
-	print("steer: " + str(steerInput))
+	print("acc: " + str(input.y))
+	print("steer: " + str(input.x))
+	
+func _physics_process(delta):
+	ApplyRotation(delta)
+	ApplyEngineForce(delta)
 	
 func InputConctroller():
-	accInput = int(Input.is_action_pressed("MovementFwd")) - int(Input.is_action_pressed("MovementBwd"))
-	steerInput = int(Input.is_action_pressed("MovementLeft")) - int(Input.is_action_pressed("MovementRight"))
+	input.x =  int(Input.is_action_pressed("MovementLeft")) - int(Input.is_action_pressed("MovementRight"))
+	input.y = int(Input.is_action_pressed("MovementFwd")) - int(Input.is_action_pressed("MovementBwd"))
+
+func ApplyRotation(delta):
+	apply_torque(Vector3(0,1,0) * input.x)
+	
+func ApplyEngineForce(delta):
+	apply_force(Vector3(0,0,1) * input.y)
