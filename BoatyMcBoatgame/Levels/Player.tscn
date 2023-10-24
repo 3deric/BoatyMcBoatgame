@@ -1,24 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2hgvkrs4gtb7"]
 
-[ext_resource type="ArrayMesh" uid="uid://besipei0tgef1" path="res://Assets/Meshes/watercraftPack_006.obj" id="1_bxyid"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_sinsm"]
+[ext_resource type="ArrayMesh" uid="uid://cwmcbuw8dnki1" path="res://Assets/Meshes/boat.obj" id="2_uhgsh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wl08p"]
-radius = 0.26
-height = 1.22
+radius = 2.23
+height = 20.718
 
 [node name="Player" type="RigidBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 10.0
 gravity_scale = 0.0
+contact_monitor = true
 lock_rotation = true
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_sinsm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.133501, 0.0708853)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.824, 0.071)
 shape = SubResource("CapsuleShape3D_wl08p")
 
-[node name="WatercraftPack006" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = ExtResource("1_bxyid")
+[node name="Boat" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_uhgsh")
